@@ -1,0 +1,6 @@
+In this folder, you can find the .mat files used for training and testing the AI architecture to localise scar-related VT episodes
+from ECGs or EGMs.
+
+At the moment, the folder only contains real VT signals as the files for simulated signals (post-processed in matlab)
+are too large. If you want to run python tests scripts, please contact me (sofia.monaci.5@gmail.com) and I will give you access
+to simulation data
