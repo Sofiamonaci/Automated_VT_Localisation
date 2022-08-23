@@ -3,7 +3,7 @@ Test script to re-trained AI architecture on ECGs/EGMs of scar-related VTs and t
 """
 
 import tensorflow as tf
-from transfer_learning import generate_model_name, read_training, read_testing, transfer_learning_training,plot_training_validation_curves, transfer_learning_testing
+from ..transfer_learning import generate_model_name, read_training, read_testing, transfer_learning_training,plot_training_validation_curves, transfer_learning_testing
 import os
 
 '''
@@ -38,9 +38,8 @@ start_vt = list(range(0,20,10))
 LOADING TRAINED MODELS (FROM INITIAL PACING)
 '''
 
-# ../../initial_pacing/trained_models'
-folder_phi = '../trained_models/'
-folder_reg = '../trained_models/'
+folder_phi = '../initial_pacing/trained_models/'
+folder_reg = '../initial_pacing/trained_models/'
 
 model_phi_name = generate_model_name(folder = folder_phi + pacing_ext, leads=leads, timepoints= timepoints, feat=17, n_batch=batch_size_phi, n_epochs=epochs_phi)
 model_reg_name = generate_model_name(folder = folder_reg + pacing_ext, leads=leads, timepoints= timepoints,  feat=2, n_batch=batch_size_reg, n_epochs=epochs_reg)
