@@ -326,8 +326,3 @@ def transfer_learning_testing(data_test,
         np.savetxt(outfile, predicted)
 
 
-
-
-
-print(list(range(30,200,10)))
-
