@@ -102,11 +102,11 @@ else:
 '''
 RE-TRAINING if FLAGS are TRUE
 '''
+data_train, label_train, class_weights_phi = read_training(filename = re_training_dataset, leads=leads, flag_weights=flag_weights, flag_norm=flag_norm)
 
 if flag_re_training_phi:
     print('\n\nRE-TRAINING PHI CLASSIFICATION ON VT EPISODES\n\n')
     print('First, loading training datasets ...')
-    data_train, label_train, class_weights_phi = read_training(filename = re_training_dataset, leads=leads, flag_weights=flag_weights, flag_norm=flag_norm)
     # Then, re-trained
     re_training_phi, re_trained_model_phi = transfer_learning_training(data_train,
                                label_train,
@@ -124,14 +124,13 @@ if not os.path.exists(re_trained_model_phi_name + '_training.png'):
 if flag_re_training_reg:
     print('\n\nRE-TRAINING Z_RHO REGRESSION ON VT EPISODES\n\n')
     print('First, loading training datasets ...')
-    data_train, label_train, class_weights_reg = read_training(filename = re_training_dataset, leads=leads, flag_weights=flag_weights, flag_norm=flag_norm)
     # Then, re-trained
     re_training_reg, re_trained_model_reg = transfer_learning_training(data_train,
                                label_train,
                                model = pacing_model_reg,
                                output_name = re_trained_model_reg_name,
                                flag='z_rho',
-                               class_weights=class_weights_reg,
+                               class_weights=[],
                                params=VT_params_reg)
 
 
