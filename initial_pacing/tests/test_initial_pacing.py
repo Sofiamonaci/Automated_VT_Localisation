@@ -3,8 +3,8 @@ Test script to train AI architecture to locate focal paced beats in UVCs
 """
 
 
-from intial_pacing import train_model
-from transfer_learning import read_training, plot_training_validation_curves
+from ..intial_pacing import train_model
+from ../..transfer_learning import read_training, plot_training_validation_curves
 import os
 '''
 INITIALISE ALL VARIABLES
