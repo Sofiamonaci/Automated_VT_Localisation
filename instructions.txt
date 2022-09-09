@@ -15,4 +15,6 @@ At the moment, the script utilises the already trained models that can be found 
 ./transfer_learning/trained_models
 ./initial_pacing/trained_models
 
-Once you have trained and/or tested the models, you can proceed and compute the actual localised point
+Once you have trained and/or tested the models, you can proceed and compute the actual localised point (and corresponding localisation error if
+a ground truth is provided).
+./localisation/tests/test_localisation.py
