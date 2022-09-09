@@ -1,0 +1,3 @@
+localisation.py contains modules to process the outputs of the AI platform (once it has been trained and tested) and convert points to cartesian format (if mesh of interest is present). It also allows to compute localisation errors if ground truths are present, plot histograms etc etc
+
+To run an example, ./tests/test_localisation.py. In this example, there is no ground truth, however, if provided, the file contains the [x y z] locations of the ground truths in either .pts format (carp) or (.csv)
