@@ -5,12 +5,28 @@ This can be done by running
 ./initial_pacing/tests/test_initial_pacing.py
 At the moment, the simulated training datasets are not here in GITHUB but you can email me (sofia.monaci.5@gmail.com) and I will give you access
 (so before running the script, please make sure to initialise a valid training dataset file). However, I have already uploaded the trained models in
-./initial_pacing/trained_models
+./initial_pacing/trained_models. 
+
+The training dataset needs to be in .mat format. It needs to be a structure that contains the following fields (exactly with the same names):
+
+- data_train: a 3D tensor --> N_paces x N_timepoints x N_leads
+- label_train: another structure that contains
+                - PHI --> logical 2D array. N_paces x N_features (17). So for instance, if PHI = 3 for the first pacing points, this label will be stored as
+                [0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+                - Z_RHO --> 2D array N_paces x [z_value , rho_value]
 
 In case you are NOT interested in training the AI architecture, and you want to use MY TRAINED MODELS, you can proceed and test the second
 part of the algorithm.
 ./transfer_learning/tests/test_transfer_learning.py
 You only need to CHANGE the name/path of the TEST FILE (line 33).
+
+The testing dataset needs to be in .mat format, as above. The fields should be named:
+
+- data_test
+- label_test
+
+But then the structure is the same.
+
 At the moment, the script utilises the already trained models that can be found in 
 ./transfer_learning/trained_models
 ./initial_pacing/trained_models
@@ -18,3 +34,17 @@ At the moment, the script utilises the already trained models that can be found 
 Once you have trained and/or tested the models, you can proceed and compute the actual localised point (and corresponding localisation error if
 a ground truth is provided).
 ./localisation/tests/test_localisation.py
+
+
+To recap, you can use this repository in three different ways:
+- Test the already trained model on a clinical/simulated VT ECG by running ./transfer_learning/tests/test_transfer_learning.py and changing name of test file (be careful that the function might ask for the VT training datasets, that are not here because they were too heavy, so please contact sofia.monaci.5@gmail.com)
+- Train the first part of the platform on a new pacing dataset (you can combine your new simulations with the existing dataset as long as you follow the pre-processing steps - SEE below) ./initial_pacing/tests/test_initial_pacing.py by changing the name of the desired training dataset. And then run ./transfer_learning/tests/test_transfer_learning.py after changing the names of the initial pacing models TO LOAD. You can either use the scar-related VT dataset that we generated (again, email sofia.monaci.5@gmail.com if you want to have it) or a new dataset, which leads to a third way of using the platform.
+- Train the first part of the platform on a new pacing dataset as above, and then re-train it on a new scar-related VT dataset as well.
+
+PRE-PROCESSING STEPS below:
+Please consult the paper in the README.dm to know how the simulated signals (both paced beats and VT) have been AUGMENTED and PRE-PROCESSED.
+In brief:
+- paced beats. Add 5 different level of noise (5,10,15,20,25) + keep the signals with no noise. Then, consider 3 different starting windows (e.g. 50ms, 65ms, 70ms)
+- scar-related VTs. Add 7 different level of noise (5,10,15,20,25,30,35). Then, stretch/compress signals by 3 different factos (0.9, 1.5, 1.7) - to mimic different VT BCLs). Then, consider 6 different starting windows (50,70,90,110,130,150)
+Examples on how to augment scar-related VTs will be uploaded soon in a new repository PhD_useful_functions. Data_Augmentation.m and Split_Data.py
+
