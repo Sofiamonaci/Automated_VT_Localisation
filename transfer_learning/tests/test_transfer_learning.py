@@ -29,7 +29,7 @@ VT_params_phi = {'batch_size': 50, 'epochs': 250, 'learning_rate': 0.00005, 'los
 VT_params_reg = {'batch_size': 50, 'epochs': 250, 'learning_rate': 0.0001,  'loss': 'mean_absolute_error',      'metrics': ['mse']}                      # Parameters for transfer learning Z_RHO
 
 # VT datasets namefiles | training and testing
-re_training_dataset = ''.join(['../VT_datasets/{}{}_noise_sc_windows_data_{}_{}timepoints.mat'.format(vt_ext,VT_episodes,type_sig.lower(),timepoints)])
+re_training_dataset = ''.join(['../VT_datasets/{}_{}_noise_sc_windows_data_{}_{}timepoints.mat'.format(vt_ext,VT_episodes,type_sig.lower(),timepoints)])
 testing_name = 'SBRT1_VT_test_data.mat'
 testing_dataset     = '../VT_datasets/' + testing_name
 start_vt = list(range(0,20,10))
