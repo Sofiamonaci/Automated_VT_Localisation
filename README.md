@@ -2,7 +2,7 @@
 
 If using any of the scripts in this repository, please cite
 
-[under review]
+Sofia Monaci, Shuang Qian, Karli Gillette, Esther Puyol-Antón, Rahul Mukherjee, Mark K Elliott, John Whitaker, Ronak Rajani, Mark O’Neill, Christopher A Rinaldi, Gernot Plank, Andrew P King, Martin J Bishop, Non-invasive localization of post-infarct ventricular tachycardia exit sites to guide ablation planning: a computational deep learning platform utilizing the 12-lead electrocardiogram and intracardiac electrograms from implanted devices, EP Europace, Volume 25, Issue 2, February 2023, Pages 469–477, https://doi.org/10.1093/europace/euac178
 
 ## ABOUT
 
